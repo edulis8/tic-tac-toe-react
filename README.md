@@ -1,4 +1,4 @@
-# Ready-to-hack React Skeleton 💀: React + Vite (All Cleaned-Up) + No-Sweat™ Eslint and Prettier Setup
+# Ready-to-hack React Skeleton 💀: React + Vite (All Cleaned-Up) + Eslint and Prettier Setup
 
 This template provides a minimal setup to get React working in Vite.
 
@@ -8,10 +8,10 @@ This template provides a minimal setup to get React working in Vite.
 - npm install
 - npm run dev
 
-Then - grab the "No-Sweat™ Eslint and Prettier Setup" 
+Then - grab Wes Bos's "No-Sweat™ Eslint and Prettier Setup" 
 - https://github.com/wesbos/eslint-config-wesbos
 - `npm install eslint-config-wesbos`
-- " Lints JavaScript and TypeScript based on the latest standards" - Wes 'Barracuda' Bos
+- "Lints JavaScript and TypeScript based on the latest standards" - Wes 'Barracuda' Bos
 - add some rules to get rid of some more annoying linter errors:
 - put this in your `.eslintrc.cjs`:
 
