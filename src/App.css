@@ -9,3 +9,25 @@
   padding: 2em;
 }
 
+.emphasis {
+  font-weight: 700;
+}
+
+.board {
+  display: grid;
+  /* grid-template-columns: repeat(3, 1fr); */
+  grid-template-columns: 1fr 1fr 1fr;
+  border: 1px solid black;
+  width: 75vw;
+  height: 75vw;
+}
+
+.board .cell {
+  border: 1px solid black;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 1fr;
+  max-height: 1fr;
+  /* height: 1fr; */
+}
