@@ -1,3 +1,105 @@
+// import { useReducer } from 'react';
+// import { createBoard } from './utils/utils';
+
+// const initialState = {
+//   board: createBoard(3),
+//   players: {
+//     X: { id: 1, piece: 'X', turn: true },
+//     O: { id: 2, piece: 'O', turn: false },
+//   },
+// };
+
+// function reducer(state, action) {
+//   switch (action.type) {
+//     case 'MOVE': {
+//       const newBoard = [...state.board];
+//       newBoard[action.payload.row][action.payload.col] =
+//         state.players[state.players.X.turn ? 'X' : 'O'].piece;
+//       return {
+//         ...state,
+//         board: newBoard,
+//         players: {
+//           X: { ...state.players.X, turn: !state.players.X.turn },
+//           O: { ...state.players.O, turn: !state.players.O.turn },
+//         },
+//       };
+//     }
+//     case 'RESET':
+//       return initialState;
+//     default:
+//       throw new Error();
+//   }
+// }
+
+// function App() {
+//   const [state, dispatch] = useReducer(reducer, initialState);
+
+//   function handleCellClick(row, col) {
+//     if (state.board[row][col] || checkWin()) return;
+//     dispatch({ type: 'MOVE', payload: { row, col } });
+//     checkWin();
+//   }
+
+//   // Your existing checkWin logic here
+//   function checkWin() {
+//     const currentPlayer = state.players.X.turn ? 'O' : 'X';
+//     const winConditions = [
+//       // rows
+//       ...state.board,
+//       // columns
+//       ...state.board[0].map((_, i) => state.board.map((row) => row[i])),
+//       // diagonals
+//       [0, 1, 2].map((i) => state.board[i][i]),
+//       [0, 1, 2].map((i) => state.board[i][2 - i]),
+//     ];
+//     if (
+//       winConditions.some((condition) =>
+//         condition.every((cell) => cell === currentPlayer),
+//       )
+//     ) {
+//       alert(`${currentPlayer} won!`);
+//       return true;
+//     }
+//     return false;
+//   }
+
+//   function reset() {
+//     dispatch({ type: 'RESET' });
+//   }
+
+//   const currentPlayerDisplay =
+//     state.players[state.players.X.turn ? 'X' : 'O'].piece;
+//   return (
+//     <>
+//       <h1>ⓧ Tic Tac Toe 🅾️</h1>
+//       <main className="card">
+//         <button type="button" onClick={reset}>
+//           Reset
+//         </button>
+//         <section className="info">
+//           <p className="emphasis">Current Player: {currentPlayerDisplay}</p>
+//         </section>
+//         <section className="board">
+//           {state.board.map((row, rowIndex) =>
+//             row.map((cell, colIndex) => (
+//               <button
+//                 className="cell"
+//                 type="button"
+//                 key={colIndex}
+//                 onClick={() => handleCellClick(rowIndex, colIndex)}
+//               >
+//                 {cell}
+//               </button>
+//             )),
+//           )}
+//         </section>
+//       </main>
+//     </>
+//   );
+// }
+
+// export default App;
+
 import { useEffect, useState } from 'react';
 import './App.css';
 import { createBoard } from './utils/utils';
@@ -63,7 +165,7 @@ function App() {
       let forwardDiagonalCounter = 0;
       for (let i = 0; i < board.length; i++) {
         if (board[i][i] === currentPlayer) {
-          forwardDiagonalCounter++;
+          forwardDiagonalCounter += 1;
         } else {
           break;
         }
@@ -77,7 +179,7 @@ function App() {
       let backwardDiagionalCounter = 0;
       for (let i = 0; i < board.length; i++) {
         if (board[i][board.length - i - 1] === currentPlayer) {
-          backwardDiagionalCounter++;
+          backwardDiagionalCounter += 1;
         } else {
           break;
         }
@@ -99,7 +201,6 @@ function App() {
   }
 
   const currentPlayerDisplay = players[players.currentPlayer].piece;
-  const turnDebugDisplay = players[players.currentPlayer].turn; // todo del m e
   return (
     <>
       <h1>ⓧ Tic Tac Toe 🅾️</h1>
@@ -109,7 +210,6 @@ function App() {
         </button>
         <section className="info">
           <p className="emphasis">Current Player: {currentPlayerDisplay}</p>
-          <pre>Turn: {turnDebugDisplay.toString()}</pre>
         </section>
         <section className="board">
           {board.map((row, rowIndex) =>
